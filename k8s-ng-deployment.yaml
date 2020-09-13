@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ng-client-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        label-key : web
+    spec:
+      containers:
+        - name: ng-client
+          image: harshalgalgale/k8s-ng:v1
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80
